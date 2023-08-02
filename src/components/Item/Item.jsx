@@ -5,17 +5,22 @@ const Item = ({ name, salary }) => {
   const [increase, setIncrease] = useState(false)
   const [like, setLike] = useState(false)
 
-  const onIncrease = () => {
-    setIncrease((increase) => increase = !increase)
-  }
+  const onIncrease = () => setIncrease((increase) => increase = !increase)
 
-  const onLike = () => {
-    setLike((like) => like = !like)
+  const onLike = () => setLike((like) => like = !like)
+  
+  let classNames = "list-group-item d-flex justify-content-between";
+  
+  if (increase) {
+      classNames += ' increase';
+  }
+  if (like) {
+      classNames += ' like';
   }
 
   return (
-    <li className={increase ? "list-group-item d-flex justify-content-between increase" : "list-group-item d-flex justify-content-between"}>
-      <span onClick={onLike} className={like ? "list-group-item-label like" : "list-group-item-label"}>{name}</span>
+    <li className={classNames}>
+      <span onClick={onLike} className="list-group-item-label">{name}</span>
       <input type="text" className="list-group-item-input" defaultValue={salary + '$'} />
       <div className='d-flex justify-content-center align-items-center'>
         <button
