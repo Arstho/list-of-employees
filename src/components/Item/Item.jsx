@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './item.css';
 
-const Item = ({ name, salary }) => {
+const Item = ({ name, salary, id, onDelete }) => {
   const [increase, setIncrease] = useState(false)
   const [like, setLike] = useState(false)
 
@@ -30,7 +30,9 @@ const Item = ({ name, salary }) => {
           <i className="fas fa-cookie"></i>
         </button>
 
-        <button type="button"
+        <button 
+          onClick={() => onDelete(id)}
+          type="button"
           className="btn-trash btn-sm ">
           <i className="fas fa-trash"></i>
         </button>

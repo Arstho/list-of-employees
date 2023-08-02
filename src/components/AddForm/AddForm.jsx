@@ -3,8 +3,7 @@ import './addForm.css';
 import { MyContext } from '../../App';
 
 const AddForm = () => {
-  const { worker, setWorker } = useContext(MyContext)
-  console.log(worker);
+  const { setWorker } = useContext(MyContext)
   const [inputValue, setInputValue] = useState({
     name: '',
     salary: ''
