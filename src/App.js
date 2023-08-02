@@ -1,3 +1,4 @@
+import { createContext, useState } from 'react';
 import './App.css';
 import AddForm from './components/AddForm/AddForm';
 import Filter from './components/Filter/Filter';
@@ -5,21 +6,22 @@ import Info from './components/Info/Info';
 import List from './components/List/List';
 import Search from './components/Search/Search';
 
+export const MyContext = createContext(undefined)
+
 function App() {
-  const date = [
-    { name: 'Jonh', salary: 800, id: 1 },
-    { name: 'Mike', salary: 1000, id: 2 },
-    { name: 'Carl', salary: 1200, id: 3 },
-  ]
+  const [worker, setWorker] = useState([])
+
   return (
     <div className="App">
-      <Info />
-      <div className="search-panel">
-        <Search />
-        <Filter />
-      </div>
-      <List date={date} />
-      <AddForm />
+      <MyContext.Provider value={{ worker, setWorker }}>
+        <Info />
+        <div className="search-panel">
+          <Search />
+          <Filter />
+        </div>
+        <List />
+        <AddForm />
+      </MyContext.Provider>
     </div>
   );
 }

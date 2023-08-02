@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Item from '../Item/Item'
+import { MyContext } from '../../App'
 
-const List = ({ date }) => {
+const List = () => {
+  const { worker } = useContext(MyContext)
+
   return (
     <ul className="app-list list-group">
-      {date.map(emp => <Item key={emp.id} {...emp}/>)}
+      {worker.map(emp => <Item key={emp.id} {...emp} />)}
     </ul>
   )
 }

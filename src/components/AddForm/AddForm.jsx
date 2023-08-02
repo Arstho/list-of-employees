@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './addForm.css';
+import { MyContext } from '../../App';
 
 const AddForm = () => {
+  const { worker, setWorker } = useContext(MyContext)
+  console.log(worker);
   const [inputValue, setInputValue] = useState({
     name: '',
     salary: ''
@@ -12,6 +15,17 @@ const AddForm = () => {
       ...inputValue,
       [e.target.name]: e.target.value
     })
+  }
+  const addEmployee = (e) => {
+    e.preventDefault()
+    setWorker((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        name: inputValue.name,
+        salary: inputValue.salary,
+      },
+    ]);
   }
 
   return (
@@ -36,7 +50,9 @@ const AddForm = () => {
           onChange={onValueChange}
         />
 
-        <button type="submit"
+        <button
+          onClick={addEmployee}
+          type="submit"
           className="btn btn-outline-light">Добавить</button>
       </form>
     </div>
