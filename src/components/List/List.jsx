@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 import { MyContext } from '../../App'
 
 const List = () => {
-  const { worker, setWorker } = useContext(MyContext)
+  const { worker, setWorker, visible } = useContext(MyContext)
 
   const onDelete = (id) => {
     setWorker(
@@ -25,7 +25,7 @@ const List = () => {
 
   return (
     <ul className="app-list list-group">
-      {worker?.map(emp => <Item onIncrease={onIncrease} onRise={onRise} onDelete={onDelete} key={emp.id} {...emp} />)}
+      {visible?.map(emp => <Item onIncrease={onIncrease} onRise={onRise} onDelete={onDelete} key={emp.id} {...emp} />)}
     </ul>
   )
 }

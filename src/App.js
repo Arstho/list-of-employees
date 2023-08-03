@@ -10,10 +10,23 @@ export const MyContext = createContext(undefined)
 
 function App() {
   const [worker, setWorker] = useState([])
+  const [search, setSearch] = useState('')
+  const visible = worker.filter(em => em.name.toLowerCase().startsWith(search.trim().toLowerCase()))
+
+  const filterPost = (filter) => {
+    switch (filter) {
+      case 'rise':
+        return visible.filter(item => item.rise)
+      case 'moreThen1000':
+        return visible.filter(item => item.salary >= 1000)
+      default:
+        return visible
+    }
+  }
 
   return (
     <div className="App">
-      <MyContext.Provider value={{ worker, setWorker }}>
+      <MyContext.Provider value={{ worker, setWorker, search, setSearch, visible, filterPost }}>
         <Info />
         <div className="search-panel">
           <Search />
