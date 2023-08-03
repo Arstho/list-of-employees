@@ -11,9 +11,21 @@ const List = () => {
     )
   }
 
+  const onIncrease = (id) => {
+    setWorker(
+      worker.map((el) => (el.id === id ? { ...el, increase: !el.increase } : el))
+    );
+  };
+
+  const onRise = (id) => {
+    setWorker(
+      worker.map((el) => (el.id === id ? { ...el, rise: !el.rise } : el))
+    )
+  }
+
   return (
     <ul className="app-list list-group">
-      {worker?.map(emp => <Item onDelete={onDelete} key={emp.id} {...emp} />)}
+      {worker?.map(emp => <Item onIncrease={onIncrease} onRise={onRise} onDelete={onDelete} key={emp.id} {...emp} />)}
     </ul>
   )
 }

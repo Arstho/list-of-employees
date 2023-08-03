@@ -5,8 +5,11 @@ import { MyContext } from '../../App';
 const AddForm = () => {
   const { setWorker } = useContext(MyContext)
   const [inputValue, setInputValue] = useState({
+    id: null,
     name: '',
-    salary: ''
+    salary: '',
+    increase: false,
+    rise: false,
   })
 
   const onValueChange = (e) => {
@@ -17,14 +20,18 @@ const AddForm = () => {
   }
   const addEmployee = (e) => {
     e.preventDefault()
-    setWorker((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        name: inputValue.name,
-        salary: inputValue.salary,
-      },
-    ]);
+    if (inputValue.name && inputValue.salary) {
+      setWorker((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          name: inputValue.name,
+          salary: inputValue.salary,
+          increase: false,
+          rise: false
+        },
+      ])
+    }
   }
 
   return (

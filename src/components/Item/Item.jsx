@@ -1,30 +1,23 @@
-import { useState } from 'react';
 import './item.css';
 
-const Item = ({ name, salary, id, onDelete }) => {
-  const [increase, setIncrease] = useState(false)
-  const [like, setLike] = useState(false)
+const Item = ({ name, salary, id, increase, rise, onIncrease, onRise, onDelete }) => {
 
-  const onIncrease = () => setIncrease((increase) => increase = !increase)
-
-  const onLike = () => setLike((like) => like = !like)
-  
   let classNames = "list-group-item d-flex justify-content-between";
   
   if (increase) {
       classNames += ' increase';
   }
-  if (like) {
+  if (rise) {
       classNames += ' like';
   }
 
   return (
     <li className={classNames}>
-      <span onClick={onLike} className="list-group-item-label">{name}</span>
+      <span onClick={() => onRise(id)} className="list-group-item-label">{name}</span>
       <input type="text" className="list-group-item-input" defaultValue={salary + '$'} />
       <div className='d-flex justify-content-center align-items-center'>
         <button
-          onClick={onIncrease}
+          onClick={() => onIncrease(id)}
           type="button"
           className="btn-cookie btn-sm ">
           <i className="fas fa-cookie"></i>

@@ -6,3 +6,78 @@
   box-shadow: 15px 15px 30px rgba(0, 0, 0, .15);
   color: #fff;
 }
+
+/* 
+import React, { useContext } from 'react'
+import Item from '../Item/Item'
+import { MyContext } from '../../App'
+
+const List = () => {
+  const { worker, setWorker } = useContext(MyContext)
+
+  const onDelete = (id) => {
+    setWorker(
+      worker.filter(em => em.id !== id)
+    )
+  }
+
+  const onIncrease = (id) => {
+    setWorker(
+      worker.find((el) => el.id === id ? el.increase = !el.increase : ''
+    ))
+  }
+
+  const onRise = (id) => {
+    setWorker(
+      worker.find((el) => el.id === id ? el.rise = !el.rise : ''
+    ))
+  }
+
+  return (
+    <ul className="app-list list-group">
+      {worker?.map(emp => <Item onIncrease={onIncrease} onRise={onRise} onDelete={onDelete} key={emp.id} {...emp} />)}
+    </ul>
+  )
+}
+
+export default List
+
+import './item.css';
+
+const Item = ({ name, salary, id, increase, rise, onIncrease, onRise, onDelete }) => {
+
+  let classNames = "list-group-item d-flex justify-content-between";
+  
+  if (increase) {
+      classNames += ' increase';
+  }
+  if (rise) {
+      classNames += ' like';
+  }
+
+  return (
+    <li className={classNames}>
+      <span onClick={() => onRise(id)} className="list-group-item-label">{name}</span>
+      <input type="text" className="list-group-item-input" defaultValue={salary + '$'} />
+      <div className='d-flex justify-content-center align-items-center'>
+        <button
+          onClick={() => onIncrease(id)}
+          type="button"
+          className="btn-cookie btn-sm ">
+          <i className="fas fa-cookie"></i>
+        </button>
+
+        <button 
+          onClick={() => onDelete(id)}
+          type="button"
+          className="btn-trash btn-sm ">
+          <i className="fas fa-trash"></i>
+        </button>
+        <i className="fas fa-star"></i>
+      </div>
+    </li>
+  )
+}
+
+export default Item;
+*/
